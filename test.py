@@ -7,17 +7,23 @@ import pytesseract
 from matplotlib import pyplot as plt
 from PIL import Image
 
-# functions to process r
+# functions to process image for ocr
 
 # import image
-image_file = "C:/Users/user/Desktop/bigeye/image006.png"
+image_file = "C:/Users/user/Desktop/bigeye/temp/V0.jpg"
 img = cv2.imread(image_file)
 
 # setup params
-thresh1 = 120
-thresh2 = 220
+# for my horizontal text
+#thresh1 = 95
+#thresh2 = 140
+thresh1 = 190
+thresh2 = 255
 #crop_h =
 #crop_w =
+
+# rotate image if required
+img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
 
 # display image
 #https://stackoverflow.com/questions/28816046/
@@ -55,6 +61,7 @@ grey_image = greyscale(inverted_image)
 cv2.imwrite("C:/Users/user/Desktop/bigeye/temp/grey.jpg", grey_image)
 #display("C:/Users/user/Desktop/bigeye/temp/grey.jpg")
 thresh, im_bw = cv2.threshold(grey_image,thresh1,thresh2, cv2.THRESH_BINARY)
+thresh, im_bw = cv2.threshold(im_bw,127,255, cv2.THRESH_BINARY)
 cv2.imwrite("C:/Users/user/Desktop/bigeye/temp/bw_image.jpg", im_bw)
 #display("C:/Users/user/Desktop/bigeye/temp/bw_image.jpg")
 
@@ -169,8 +176,8 @@ cv2.imwrite("C:/Users/user/Desktop/bigeye/temp/got_borders.jpg", image_with_bord
 #display("C:/Users/user/Desktop/bigeye/temp/got_borders.jpg")
 
 # use the OCR fr
-#process_image = thick_font(dilated_image)
 process_image = remove_borders(no_noise)
+process_image = thin_font(process_image)
 process_image = cv2.copyMakeBorder(process_image,top,bottom,left,right,cv2.BORDER_CONSTANT,value=colour)
 cv2.imwrite("C:/Users/user/Desktop/bigeye/temp/processed_image.jpg",process_image)
 
