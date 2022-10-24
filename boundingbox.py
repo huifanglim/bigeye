@@ -1,0 +1,1 @@
+# find structure and run OCR on only the bounding box
