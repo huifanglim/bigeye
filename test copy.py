@@ -13,7 +13,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\\Users\\user\\AppData\\Local\\Progr
 # functions to pre-process image for ocr
 
 # import image
-image_file = "C:/Users/user/Desktop/bigeye/temp/SN 2251 TO 2256 V-0.jpg"
+image_file = "C:/Users/user/Desktop/bigeye/temp/testimg.jpg"
 img = cv2.imread(image_file)
 
 # setup params
