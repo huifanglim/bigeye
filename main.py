@@ -36,7 +36,7 @@ def runApps():
         os.startfile(app)
 
 # make GUI bigger, change colour
-canvas = tk.Canvas(root, height = 700, width = 700, bg = "#FFFFFF")
+canvas = tk.Canvas(root, height = 70, width = 70, bg = "#FFFFFF")
 canvas.pack()
 
 frame = tk.Frame(root, bg = "white")
